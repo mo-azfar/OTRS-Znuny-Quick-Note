@@ -1,0 +1,40 @@
+# --
+# Copyright (C) 202 mo-azfar,https://github.com/mo-azfar/OTRS-Znuny-Quick-Note
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="WidgetSimple">
+    <div class="Header">
+        <div class="WidgetAction Toggle">
+            <a href="#" title="[% Translate("Show or hide the content") | html %]"><i class="fa fa-caret-right"></i><i class="fa fa-caret-down"></i></a>
+        </div>
+        <h2>[% Translate(Data.WidgetTitle) | html %]</h2>
+    </div>
+	<div class="Content">
+		<fieldset class="TableLike FixedLabelSmall Narrow">
+		<form action="[% Env("CGIHandle") %]?Action=AgentTicketZoom;TicketID=[% Data.TicketID %]" method="post" enctype="multipart/form-data" name="EngFilter" class="Validate PreventMultipleSubmits" id="EngFilter">
+		<input type="hidden" name="Action" value="[% Env("Action") %]"/>
+		<input type="hidden" name="Subaction" value="AddNote" />
+		[% RenderBlockStart("SubmitQuickText") %]
+		<div id="RichTextField" class="RichTextField">
+            <textarea id="QuickText" class="Validate_Required" name="QuickText" rows="7" cols="35"></textarea>
+			<div id="QuickTextError" class="TooltipErrorMessage"><p>This field is required.</p></div>
+            <div id="QuickTextServerError" class="TooltipErrorMessage"><p>This field is required.</p></div>
+        </div>
+        <div class="Clear"></div>
+		<div class="Field SpacingTop">
+			<button class="Primary CallForAction" id="submitRichText" accesskey="g" title="[% Translate("Add Note") | html %] (g)" type="submit" value="[% Translate("Add Note") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Add Note") | html %]</span></button>
+		</div>
+		[% RenderBlockEnd("SubmitQuickText") %]
+		</form>
+		</fieldset>
+	</div>
+</div>
+[% WRAPPER JSOnDocumentComplete %]
+[% Data.JS %]
+[% END %]
+ 
+
