@@ -7,10 +7,10 @@
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketZoom::TicketWidget</Item>
                 <Item Key="Location">Sidebar</Item>
-				        <Item Key="IsVisibleForCustomer" ValueType="Select" SelectedID="NotVisible">
-					        <Item ValueType="Option" Value="NotVisible" Translatable="1">Not Visible</Item>
-					        <Item ValueType="Option" Value="Visible" Translatable="1">Visible</Item>
-				        </Item>
+				<Item Key="IsVisibleForCustomer" ValueType="Select" SelectedID="NotVisible">
+				    <Item ValueType="Option" Value="NotVisible" Translatable="1">Not Visible</Item>
+				    <Item ValueType="Option" Value="Visible" Translatable="1">Visible</Item>
+				</Item>
             </Hash>
         </Value>
     </Setting>
