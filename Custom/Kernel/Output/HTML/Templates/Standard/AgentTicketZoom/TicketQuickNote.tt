@@ -15,9 +15,8 @@
     </div>
 	<div class="Content">
 		<fieldset class="TableLike FixedLabelSmall Narrow">
-		<form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="EngFilter" class="Validate PreventMultipleSubmits" id="EngFilter">
+		<form action="[% Env("CGIHandle") %]?Action=AgentTicketQuickNote;TicketID=[% Data.TicketID %]" method="post" enctype="multipart/form-data" name="EngFilter" class="Validate PreventMultipleSubmits" id="EngFilter">
 		[% RenderBlockStart("SubmitQuickNote") %]
-		<input type="hidden" name="quickTicketID" id="quickTicketID" value="[% Data.quickTicketID %]">
 		<div id="RichTextField" class="RichTextField">
             <textarea id="QuickNote" class="Validate_Required" name="QuickNote" rows="7" cols="35"></textarea>
 			<div id="QuickNoteError" class="TooltipErrorMessage"><p>This field is required.</p></div>
@@ -25,20 +24,10 @@
         </div>
         <div class="Clear"></div>
 		<div class="Field SpacingTop">
-			<button class="Primary CallForAction" id="submitRichText" onclick="AddQuickNote()"; accesskey="g" title="[% Translate("Add Note") | html %] (g)" type="button" value="[% Translate("Add Note") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Add Note") | html %]</span></button>
+			<button class="Primary CallForAction" id="submitRichText" accesskey="g" title="[% Translate("Add Note") | html %] (g)" type="submit" value="[% Translate("Add Note") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Add Note") | html %]</span></button>
 		</div>
 		[% RenderBlockEnd("SubmitQuickNote") %]
 		</form>
 		</fieldset>
 	</div>
 </div>
-
-<script type="text/javascript">
-function AddQuickNote() {
-var ticketID = $("#quickTicketID").val();
-var quickNote = $("#QuickNote").val();
-if (!ticketID) return;
-if (!quickNote) return;
-window.location.search = "?Action=AgentTicketQuickNote;TicketID="+ticketID+";QuickNote="+quickNote;
-}
-</script>

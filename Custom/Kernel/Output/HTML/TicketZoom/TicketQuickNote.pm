@@ -36,15 +36,12 @@ sub Run {
     );
 	
 	# set display options
-    $Param{WidgetTitle} = Translatable('Ticket Widget');
+    $Param{WidgetTitle} = Translatable('Quick Note');
 
     if ( $Access ) 
 	{
         $LayoutObject->Block(
             Name => 'SubmitQuickNote',
-			Data => {
-				quickTicketID => $Ticket{TicketID}
-			},
 		);
 	}
 
