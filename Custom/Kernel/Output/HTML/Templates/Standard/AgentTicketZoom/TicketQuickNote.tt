@@ -1,0 +1,44 @@
+# --
+# Copyright (C) 202 mo-azfar,https://github.com/mo-azfar/OTRS-Znuny-Quick-Note
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+<div class="WidgetSimple">
+    <div class="Header">
+        <div class="WidgetAction Toggle">
+            <a href="#" title="[% Translate("Show or hide the content") | html %]"><i class="fa fa-caret-right"></i><i class="fa fa-caret-down"></i></a>
+        </div>
+        <h2>[% Translate(Data.WidgetTitle) | html %]</h2>
+    </div>
+	<div class="Content">
+		<fieldset class="TableLike FixedLabelSmall Narrow">
+		<form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="EngFilter" class="Validate PreventMultipleSubmits" id="EngFilter">
+		[% RenderBlockStart("SubmitQuickNote") %]
+		<input type="hidden" name="quickTicketID" id="quickTicketID" value="[% Data.quickTicketID %]">
+		<div id="RichTextField" class="RichTextField">
+            <textarea id="QuickNote" class="Validate_Required" name="QuickNote" rows="7" cols="35"></textarea>
+			<div id="QuickNoteError" class="TooltipErrorMessage"><p>This field is required.</p></div>
+            <div id="QuickNoteServerError" class="TooltipErrorMessage"><p>This field is required.</p></div>
+        </div>
+        <div class="Clear"></div>
+		<div class="Field SpacingTop">
+			<button class="Primary CallForAction" id="submitRichText" onclick="AddQuickNote()"; accesskey="g" title="[% Translate("Add Note") | html %] (g)" type="button" value="[% Translate("Add Note") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Add Note") | html %]</span></button>
+		</div>
+		[% RenderBlockEnd("SubmitQuickNote") %]
+		</form>
+		</fieldset>
+	</div>
+</div>
+
+<script type="text/javascript">
+function AddQuickNote() {
+var ticketID = $("#quickTicketID").val();
+var quickNote = $("#QuickNote").val();
+if (!ticketID) return;
+if (!quickNote) return;
+window.location.search = "?Action=AgentTicketQuickNote;TicketID="+ticketID+";QuickNote="+quickNote;
+}
+</script>
