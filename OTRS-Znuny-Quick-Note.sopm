@@ -13,6 +13,7 @@
       <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
       <ChangeLog Version="1.0.1" Date="2022-09-26 00:00:01">New package.</ChangeLog>
 	  <ChangeLog Version="6.5.1" Date="2023-04-07 00:00:01">Update supported framework 6.5.x. Update version to reflex latest supported framework</ChangeLog>
+	  <ChangeLog Version="7.0.1" Date="2023-05-03 00:00:01">Update supported framework 7.0.x.</ChangeLog>
       <Description Lang="en">quick note at agent ticket zooom screen.</Description>
       <Filelist>
          <File Permission="660" Location="Kernel/Config/Files/XML/ZZZTicketQuickNote.xml"></File>
