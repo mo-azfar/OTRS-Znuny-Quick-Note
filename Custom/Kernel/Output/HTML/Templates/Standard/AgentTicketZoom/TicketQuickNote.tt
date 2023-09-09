@@ -15,15 +15,23 @@
     </div>
 	<div class="Content">
 		<fieldset class="TableLike FixedLabelSmall Narrow">
-		<form action="[% Env("CGIHandle") %]?Action=AgentTicketQuickNote;TicketID=[% Data.TicketID %]" method="post" enctype="multipart/form-data" name="EngFilter" class="Validate PreventMultipleSubmits" id="EngFilter">
+        <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="Compose" class="Validate PreventMultipleSubmits AgentTicketActionCommon">
+        <input type="hidden" name="Action" value="AgentTicketQuickNote"/>
+        <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
 		[% RenderBlockStart("SubmitQuickNote") %]
 		<div id="RichTextField" class="RichTextField">
             <textarea id="QuickNote" class="Validate_Required" name="QuickNote" rows="7" cols="35"></textarea>
 			<div id="QuickNoteError" class="TooltipErrorMessage"><p>This field is required.</p></div>
             <div id="QuickNoteServerError" class="TooltipErrorMessage"><p>This field is required.</p></div>
         </div>
-        <div class="Clear"></div>
-		<div class="Field SpacingTop">
+        [% RenderBlockStart("QuickClose") %]
+        <div class="Field">
+            <label style="color:black;">[% Translate("Close This Ticket ?") | html %]
+                <input id="CloseNow" name="CloseNow" type="checkbox" value="1">
+            </label>
+        </div>
+        [% RenderBlockEnd("QuickClose") %]
+		<div class="Field">
 			<button class="Primary CallForAction" id="submitRichText" accesskey="g" title="[% Translate("Add Note") | html %] (g)" type="submit" value="[% Translate("Add Note") | html %]"><span><i class="fa fa-check-square-o"></i> [% Translate("Add Note") | html %]</span></button>
 		</div>
 		[% RenderBlockEnd("SubmitQuickNote") %]

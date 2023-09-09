@@ -1,6 +1,12 @@
 # OTRS Znuny Quick Note
-- Built based on Znuny 6.5. 
-- Should work on Znuny Features 7.0.x and Znuny LTS / OTRS Communit Edition (Not Tested)
-- Quick ticket note widget allow agent to add quick note to the ticket
+- Built based on Znuny 7.0. 
+- Should work on Znuny LTS and OTRS Community Edition (Not Tested)
+- Quick ticket note widget allow agent to add quick note to the ticket and close the ticket (configurable)
 
-[![Screenshot-2022-04-18-113537.png](https://i.postimg.cc/d3mg837w/Screenshot-2022-04-18-113537.png)](https://postimg.cc/fSyHswjr)
+1. To enable option to close the ticket, see 
+
+        Ticket::Frontend::AgentTicketZoom###Widgets###0099-TicketQuickNote 
+
+![qnc-setting](qnc-setting.png)
+
+![qnc-zoom](qnc-zoom.png)

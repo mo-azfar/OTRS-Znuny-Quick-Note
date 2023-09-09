@@ -34,15 +34,22 @@ sub Run {
         TicketID => $Ticket{TicketID},
         UserID   => $Self->{UserID}
     );
-	
+
 	# set display options
-    $Param{WidgetTitle} = Translatable('Quick Note');
+    $Param{WidgetTitle} = Translatable('Ticket Widget');
 
     if ( $Access ) 
 	{
         $LayoutObject->Block(
             Name => 'SubmitQuickNote',
 		);
+
+        if ($Param{Config}->{QuickCloseEnabled})
+        {
+            $LayoutObject->Block(
+                Name => 'QuickClose',
+		    );
+        }
 	}
 
     my $Output = $LayoutObject->Output(

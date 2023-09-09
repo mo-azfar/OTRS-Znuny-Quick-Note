@@ -24,6 +24,7 @@ sub new {
 
     # get params
     $Self->{QuickNote} = $ParamObject->GetParam( Param => 'QuickNote' );
+    $Self->{CloseNow} = $ParamObject->GetParam( Param => 'CloseNow' );
 
     return $Self;
 }
@@ -34,22 +35,41 @@ sub Run {
     my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
     my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 	my $ArticleBackendObject = $Kernel::OM->Get('Kernel::System::Ticket::Article')->BackendForChannel(ChannelName => 'Internal');
-		
+    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+
 	# check permissions
-    my $Access = $Kernel::OM->Get('Kernel::System::Ticket')->TicketPermission(
+    my $Access = $TicketObject->TicketPermission(
         Type     => 'note',
         TicketID => $Self->{TicketID},
         UserID   => $Self->{UserID}
     );
 	
-	if ( !$Access )
+    if ( !$Access )
 	{
 		return $LayoutObject->ErrorScreen(
             Message => 'Need note permission!',
             Comment => 'Please contact the admin.',
         );
 	}
-	
+
+    # check permissions for close now
+    if ( $Self->{CloseNow} )
+    {
+        my $AccessOk = $TicketObject->OwnerCheck(
+            TicketID => $Self->{TicketID},
+            OwnerID  => $Self->{UserID}
+        );
+
+        if ( !$AccessOk )
+	    {
+		    return $LayoutObject->ErrorScreen(
+                Message => 'Need owner!',
+                Comment => 'Only ticket owner can perform this.',
+            );
+	    }
+
+    }
+    
 	if ( !$Self->{QuickNote} )
 	{
 		return $LayoutObject->ErrorScreen(
@@ -78,9 +98,21 @@ sub Run {
 		NoAgentNotify    => 0,                                      
 	);
 	
-    # return output
+    if ( $ArticleID && $Self->{CloseNow} )
+    {
+        my $State = $ConfigObject->Get('Ticket::Frontend::AgentTicketZoom')->{'Widgets'}->{'0099-TicketQuickNote'}->{'QuickCloseState'};
+        
+        my $Success = $TicketObject->TicketStateSet(
+            State     => $State,
+            TicketID  => $Self->{TicketID},
+            ArticleID => $ArticleID,
+            UserID   => $Self->{UserID},
+        );
+    }
+
+    #return output
     return $LayoutObject->Redirect(
-        OP => "Action=AgentTicketZoom;TicketID=$Self->{TicketID};ArticleID=$ArticleID",
+        OP => "Action=AgentTicketZoom;TicketID=$Self->{TicketID}#$ArticleID",
     );
 }
 

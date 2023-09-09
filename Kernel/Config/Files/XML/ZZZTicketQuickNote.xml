@@ -11,6 +11,11 @@
 					<Item ValueType="Option" Value="0" Translatable="1">Not Visible</Item>
 					<Item ValueType="Option" Value="1" Translatable="1">Visible</Item>
 				</Item>
+                <Item Key="QuickCloseEnabled" ValueType="Select" SelectedID="0">
+					<Item ValueType="Option" Value="0" Translatable="1">Disabled</Item>
+					<Item ValueType="Option" Value="1" Translatable="1">Enabled</Item>
+				</Item>
+                <Item Key="QuickCloseState" ValueType="Entity" ValueEntityType="State">closed successful</Item>
             </Hash>
         </Value>
     </Setting>
