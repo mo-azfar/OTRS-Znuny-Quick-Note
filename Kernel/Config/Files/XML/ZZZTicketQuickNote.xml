@@ -7,19 +7,19 @@
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketZoom::TicketQuickNote</Item>
                 <Item Key="Location">Sidebar</Item>
-				<Item Key="IsVisibleForCustomer" ValueType="Select" SelectedID="0">
-					<Item ValueType="Option" Value="0" Translatable="1">Not Visible</Item>
-					<Item ValueType="Option" Value="1" Translatable="1">Visible</Item>
-				</Item>
+                <Item Key="IsVisibleForCustomer" ValueType="Select" SelectedID="0">
+                    <Item ValueType="Option" Value="0" Translatable="1">Not Visible</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">Visible</Item>
+                </Item>
                 <Item Key="QuickCloseEnabled" ValueType="Select" SelectedID="0">
-					<Item ValueType="Option" Value="0" Translatable="1">Disabled</Item>
-					<Item ValueType="Option" Value="1" Translatable="1">Enabled</Item>
-				</Item>
+                    <Item ValueType="Option" Value="0" Translatable="1">Disabled</Item>
+                    <Item ValueType="Option" Value="1" Translatable="1">Enabled</Item>
+                </Item>
                 <Item Key="QuickCloseState" ValueType="Entity" ValueEntityType="State">closed successful</Item>
             </Hash>
         </Value>
     </Setting>
-	<Setting Name="Frontend::Module###AgentTicketQuickNote" Required="0" Valid="1">
+    <Setting Name="Frontend::Module###AgentTicketQuickNote" Required="0" Valid="1">
         <Description Translatable="1">FrontendModuleRegistration for AgentTicketQuickNote module.</Description>
         <Navigation>Frontend::Agent::ModuleRegistration</Navigation>
         <Value>

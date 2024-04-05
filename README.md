@@ -7,6 +7,6 @@
 
         Ticket::Frontend::AgentTicketZoom###Widgets###0099-TicketQuickNote 
 
-![qnc-setting](qnc-setting.png)
+![qnc-setting](doc/en/images/qnc-setting.png)
 
-![qnc-zoom](qnc-zoom.png)
+![qnc-zoom](doc/en/images/qnc-zoom.png)

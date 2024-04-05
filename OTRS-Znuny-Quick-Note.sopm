@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>OTRS-Znuny-Quick-Note</Name>
+    <Version>7.0.3</Version>
+    <Vendor>mo-azfar</Vendor>
+    <URL>https://github.com/mo-azfar/</URL>
+    <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
+    <ChangeLog Version="7.0.1">New package.</ChangeLog>
+    <ChangeLog Version="7.0.2">Add quick close checkbox option to close the ticket.</ChangeLog>
+    <ChangeLog Version="7.0.3">Apply code policy.</ChangeLog>
+    <Description Lang="en">quick note (alongside close ticket option) at agent ticket zooom screen.</Description>
+    <Framework>7.0.x</Framework>
+    <Framework>6.5.x</Framework>
+    <Framework>6.4.x</Framework>
+    <Framework>6.3.x</Framework>
+    <Framework>6.2.x</Framework>
+    <Framework>6.1.x</Framework>
+    <Framework>6.0.x</Framework>
+    <IntroInstall Lang="en" Title="Install Information" Type="pre"><![CDATA[
+        <br/>
+        <b>WELCOME</b>
+        <br/>
+        <br/>
+        You are about to install the package OTRS-Znuny-Quick-Note. Check <a href='https://github.com/mo-azfar/OTRS-Znuny-Quick-Note' target='_blank'/>README</a><br/>
+        <br/><br/>
+        ((enjoy))<br/>
+        <br/>
+    ]]></IntroInstall>
+    <IntroUpgrade Lang="en" Title="Upgrade Information" Type="pre"><![CDATA[
+        <br/>
+        Changelog<br/>
+        7.0.1 - New package.<br/>
+        7.0.2 - Add quick close checkbox option to close the ticket..<br/>
+        7.0.3 - Apply code policy.<br/>
+        <br/><br/>
+        ((enjoy))<br/>
+        <br/>
+    ]]></IntroUpgrade>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/XML/ZZZTicketQuickNote.xml"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/TicketZoom/TicketQuickNote.pm"></File>
+        <File Permission="644" Location="Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketQuickNote.tt"></File>
+        <File Permission="644" Location="Kernel/Modules/AgentTicketQuickNote.pm"></File>
+    </Filelist>
+</otrs_package>

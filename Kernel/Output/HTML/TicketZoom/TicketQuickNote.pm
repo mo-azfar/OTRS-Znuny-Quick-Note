@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 202 mo-azfar,https://github.com/mo-azfar/OTRS-Znuny-Quick-Note
+# Copyright (C) 2024 mo-azfar, https://github.com/mo-azfar/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -23,41 +23,41 @@ sub Run {
 
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-   	my $ParamObject     = $Kernel::OM->Get('Kernel::System::Web::Request');
-	
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+
     my %Ticket    = %{ $Param{Ticket} };
     my %AclAction = %{ $Param{AclAction} };
-	
-	# check permissions
+
+    # check permissions
     my $Access = $Kernel::OM->Get('Kernel::System::Ticket')->TicketPermission(
         Type     => 'note',
         TicketID => $Ticket{TicketID},
         UserID   => $Self->{UserID}
     );
 
-	# set display options
+    # set display options
     $Param{WidgetTitle} = Translatable('Ticket Widget');
 
-    if ( $Access ) 
-	{
+    if ($Access)
+    {
         $LayoutObject->Block(
             Name => 'SubmitQuickNote',
-		);
+        );
 
-        if ($Param{Config}->{QuickCloseEnabled})
+        if ( $Param{Config}->{QuickCloseEnabled} )
         {
             $LayoutObject->Block(
                 Name => 'QuickClose',
-		    );
+            );
         }
-	}
+    }
 
     my $Output = $LayoutObject->Output(
         TemplateFile => 'AgentTicketZoom/TicketQuickNote',
         Data         => { %Param, %Ticket, %AclAction },
     );
-	
-	return {
+
+    return {
         Output => $Output,
     };
 }
